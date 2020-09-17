@@ -10,10 +10,9 @@ namespace BookStoreApp.Data
 {
     public class BooksDBContext : DbContext
     {
-        public DbSet<Book> Books { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=BookStoreApp;Integrated Security=True");
+        public BooksDBContext(DbContextOptions<BooksDBContext> options) : base(options) {
+            
         }
+        public DbSet<Book> Books { get; set; }
     }
 }
