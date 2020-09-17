@@ -39,7 +39,8 @@ namespace BookStoreApp
                 // Make the session cookie essential
                 options.Cookie.IsEssential = true;
             });
-
+            services.AddDbContext<BooksDBContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DevConnection"))
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
